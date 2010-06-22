@@ -26,6 +26,7 @@ public class SSO {
     }
 
     public SSO(String server, String salt) {
+        this();
         this.server = server;
         this.salt = salt;
     }
@@ -41,11 +42,32 @@ public class SSO {
     }
 
     public String getToken() {
-        String tokenString = join(joinPairs(params, "-", TOKENIZED_PARAMS), ":") + salt;
+        return sha1(join(joinPairs(params, "-", TOKENIZED_PARAMS), ":") + salt);
+    }
+
+    public String sha1(String text) {
+        if (null == text) {
+            throw new NullPointerException("Can't has encode text: null given");
+        }
         try {
-            return MessageDigest.getInstance("SHA-1").digest(tokenString.getBytes()).toString();
+            final byte[] hash = MessageDigest.getInstance("SHA-1").digest(
+                    text.getBytes());
+            final StringBuffer buffer = new StringBuffer();
+            for (final byte c : hash) {
+                final String hex = Integer.toHexString(c);
+                final int len = hex.length();
+                if (0 == len) {
+                    continue;
+                }
+                if (1 == len) {
+                    buffer.append('0').append(hex.substring(len - 1));
+                } else {
+                    buffer.append(hex.substring(len - 2));
+                }
+            }
+            return buffer.toString();
         } catch (NoSuchAlgorithmException e) {
-            return "failed";
+            throw new RuntimeException(e);
         }
     }
 
@@ -59,6 +81,10 @@ public class SSO {
 
     public void setExpiresIn(int in) {
         params.put("expires", new Long(in + getTimestamp()).toString());
+    }
+
+    public void setExpires(long timestamp) {
+        params.put("expires", new Long(timestamp).toString());
     }
 
     protected long getTimestamp() {
@@ -86,14 +112,14 @@ public class SSO {
         }
         return buffer.toString();
     }
-    
+
     // Dummy getters/setters
     public String getAvatarUrl() {
         return params.get("avatar_url");
     }
 
     public void setAvatarUrl(String avatarUrl) {
-        params.put("avatar_urml", avatarUrl);
+        params.put("avatar_url", avatarUrl);
     }
 
     public String getCharset() {

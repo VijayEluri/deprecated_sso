@@ -3,11 +3,10 @@ require File.dirname(__FILE__) + '/../lib/feedback20_sso.rb'
 describe Feedback20::SSO do
   
   before(:each) do
-    @salt = 'bfc9396b7c710746b19a1297e70d1716'
     @sso = Feedback20::SSO.new(
       'service' => 'http://example.ideas.feedback20.com/',
       'server' => 'https://example.users.feedback20.com/',
-      'salt' => @salt
+      'salt' => 'bfc9396b7c710746b19a1297e70d1716'
     )
   end
   
