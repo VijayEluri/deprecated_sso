@@ -1,15 +1,19 @@
 package com.feedback20.users;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class SSOTest {
 
-    static String SERVER = "https://example.users.feedback20.com/";
+    URL SERVER;
+    URL SERVICE;
     static String SALT = "bfc9396b7c710746b19a1297e70d1716";
-    static String SERVICE = "http://example.ideas.feedback20.com/";
 
-    public SSOTest() {
+    public SSOTest() throws MalformedURLException {
+        SERVER = new URL("https", "example.users.feedback20.com", "/");
+        SERVICE = new URL("http", "example.ideas.feedback20.com", "/");
     }
 
     @Test

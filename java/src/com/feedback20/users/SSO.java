@@ -1,11 +1,12 @@
 package com.feedback20.users;
 
+import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
-import java.util.Hashtable;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -22,16 +23,16 @@ public class SSO {
     private String salt;
 
     public SSO() {
-        params = new Hashtable<String, String>();
+        params = new HashMap<String, String>();
     }
 
-    public SSO(String server, String salt) {
+    public SSO(URL server, String salt) {
         this();
-        this.server = server;
-        this.salt = salt;
+        setServer(server);
+        setSalt(salt);
     }
 
-    public SSO(String server, String salt, String service) {
+    public SSO(URL server, String salt, URL service) {
         this(server, salt);
         setService(service);
     }
@@ -44,6 +45,7 @@ public class SSO {
     public String getToken() {
         return sha1(join(joinPairs(params, "-", TOKENIZED_PARAMS), ":") + salt);
     }
+
 
     public String sha1(String text) {
         if (null == text) {
@@ -113,6 +115,14 @@ public class SSO {
         return buffer.toString();
     }
 
+    public void setServer(URL server) {
+        this.server = server.toString();
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
     // Dummy getters/setters
     public String getAvatarUrl() {
         return params.get("avatar_url");
@@ -166,8 +176,8 @@ public class SSO {
         return params.get("service");
     }
 
-    public void setService(String service) {
-        params.put("service", service);
+    public void setService(URL service) {
+        params.put("service", service.toString());
     }
 
     public String getUuid() {
