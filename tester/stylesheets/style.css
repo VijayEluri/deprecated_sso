@@ -1,0 +1,9 @@
+
+
+tr { border: 2px solid black;}
+tr.missing { background-color: red;}
+tr.absent { background-color: yellow;}
+tr.present { background-color: green;}
+
+.success { background-color: green; }
+.failure { background-color: red; }
