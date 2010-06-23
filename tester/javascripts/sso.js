@@ -73,11 +73,11 @@ var SSOTester = Class.create({
         table.insert(header);
         
         this.paramsTable.each(function(param) {
-            var row = new Element('tr', {class: param.getStatus()});
-            row.insert(new Element('td', {class: 'param_name'}).update(param.name));
-            row.insert(new Element('td', {class: 'param_required_' + param.isRequired }).update(param.isRequired));
-            row.insert(new Element('td', {class: 'param_value'}).update(param.value));
-            row.insert(new Element('td', {class: 'param_status'}).update(param.getStatus()));
+            var row = new Element('tr', {'class': param.getStatus()});
+            row.insert(new Element('td', {'class': 'param_name'}).update(param.name));
+            row.insert(new Element('td', {'class': 'param_required_' + param.isRequired }).update(param.isRequired));
+            row.insert(new Element('td', {'class': 'param_value'}).update(param.value));
+            row.insert(new Element('td', {'class': 'param_status'}).update(param.getStatus()));
             table.insert(row);
         });
         
