@@ -40,6 +40,9 @@ class Feedback20SSO {
         $params['token'] = $this->token($params);
         
         $params = $this->ordered_slice($params, $this->PARAMS);
+        foreach($params as $key => $value) {
+            $params[$key] = urlencode($value);
+        }
         return $this->base_url().$this->two_way_join('&', '=', $params);
     }
     
