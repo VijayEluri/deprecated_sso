@@ -1,4 +1,5 @@
 require 'uri'
+require 'cgi'
 require 'digest/sha1'
 
 module Feedback20
@@ -55,7 +56,7 @@ module Feedback20
     def url(params)
       normalize_params(params)
       check_params(params)
-      query_string = ordered_slice(params, PARAMS).map{ |key, value| "#{key}=#{value}" }.join('&')
+      query_string = ordered_slice(params, PARAMS).map{ |key, value| "#{key}=#{CGI.escape(value)}" }.join('&')
       URI.escape("#{base_url}#{query_string}")
     end
 
