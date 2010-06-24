@@ -1,7 +1,9 @@
 package com.feedback20.users;
 
+import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -30,7 +32,7 @@ public class SSO {
 
     /**
      * @param server URL of your authentication server generally something like
-     *               http<b>p</b>://<your-app-name>.users.feedback20.com/
+     *               <b>https</b>://your-app-name.users.feedback20.com/
      * @param salt   The salt available in your administration panel (see SSO doc page 6)
      */
     public SSO(URL server, String salt) {
@@ -42,10 +44,10 @@ public class SSO {
     /**
      *
      * @param server  URL of your authentication server generally something like
-     *                http<b>s</b>://<your-app-name>.users.feedback20.com/
+     *                <b>https</b>://your-app-name.users.feedback20.com/
      * @param salt    The salt available in your administration panel (see SSO doc page 6)
      * @param service URL of the application where the user will be redirected
-     *                after the authentication. Generally something like http://<your-app-name>.ideas.feedback20.com/
+     *                after the authentication. Generally something like http://your-app-name.ideas.feedback20.com/
      */
     public SSO(URL server, String salt, URL service) {
         this(server, salt);
@@ -58,10 +60,27 @@ public class SSO {
     public URL getURL() {
         setToken();
         try {
-            return new URL(getBaseURL() + join(joinPairs(params, "=", PARAMS), "&"));
+            return new URL(getBaseURL() + join(joinPairs(getURLEncodedParams(), "=", PARAMS), "&"));
         } catch (MalformedURLException e) {
             return null;
         }
+    }
+
+    private Map<String, String> getURLEncodedParams() {
+        Map<String, String> urlEncodedParams = new HashMap<String, String>();
+        String param;
+
+        for (String key: PARAMS) {
+            if (params.containsKey(key)) {
+                param = params.get(key);
+                try{
+                    param = URLEncoder.encode(param, "UTF-8");
+                } catch (UnsupportedEncodingException e) {}
+                urlEncodedParams.put(key, param);
+            }
+        }
+
+        return urlEncodedParams;
     }
 
     public String getToken() {
