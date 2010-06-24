@@ -1,26 +1,36 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>SSO Tester</title>
-        <script type="text/javascript" charset="utf-8" src="javascripts/prototype.js"></script>
-        <script type="text/javascript" charset="utf-8" src="javascripts/sha1.js"></script>
-        <script type="text/javascript" charset="utf-8" src="javascripts/sso.js"></script>
-        <link href="stylesheets/style.css" media="screen,print" rel="Stylesheet" type="text/css" />
-    </head>
-    <body>
-        
-        <form action="#" method="get" accept-charset="utf-8" id="test-form">
-            <p><label for="salt">Salt: </label><input size="32" type="text/submit/hidden/button" name="salt" value="" id="salt"></p>
-            <p><label for="url">URL: </label>
-                <textarea name="url" id="url" rows="8" cols="80"></textarea></p>
-            <p><input type="button" name="run" value="Test !" id="run"></p>
-        </form>
-        
-        <p id="stdout"></p>
-        
-        <script type="text/javascript" charset="utf-8">
-            new SSOTester($('test-form'));
-        </script>
-    </body>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>SSO Tester</title>
+    <script type="text/javascript" charset="utf-8" src="javascripts/prototype.js"></script>
+    <script type="text/javascript" charset="utf-8" src="javascripts/sha1.js"></script>
+    <script type="text/javascript" charset="utf-8" src="javascripts/sso.js"></script>
+    <link href="stylesheets/reset-fonts-grids.css" media="screen,print" rel="Stylesheet" type="text/css" />
+    <link href="stylesheets/style.css" media="screen,print" rel="Stylesheet" type="text/css" />
+</head>
+
+<body>
+    
+    <form action="#" method="get" accept-charset="utf-8" id="test-form">
+        <p class="input">
+            <label for="salt">Salt: </label>
+            <input type="text/submit/hidden/button" name="salt" value="" id="salt">
+        </p>
+        <p class="input">
+            <label for="url">URL: </label>
+            <input name="url" id="url" rows="8" cols="80" />
+        </p>
+        <p class="submit">
+            <input type="submit" value="Test !" id="run" />
+        </p>
+    </form>
+    
+    <p id="stdout"></p>
+    
+    <script type="text/javascript" charset="utf-8">
+        new SSOTester($('test-form'));
+    </script>
+</body>
+
 </html>

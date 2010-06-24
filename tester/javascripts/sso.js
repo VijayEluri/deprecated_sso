@@ -66,18 +66,18 @@ var SSOTester = Class.create({
     showParamsTable: function() {
         var table = new Element('table');
         var header = new Element('tr');
-        header.insert(new Element('td').update("Name"));
-        header.insert(new Element('td').update("Required ?"));
-        header.insert(new Element('td').update("Value"));
-        header.insert(new Element('td').update("Status"));
+        header.insert(new Element('th', {'class': 'name' }).update("Name"));
+        header.insert(new Element('th', {'class': 'required'}).update("Required ?"));
+        header.insert(new Element('th', {'class': 'value'}).update("Value"));
+        header.insert(new Element('th', {'class': 'status'}).update("Status"));
         table.insert(header);
         
         this.paramsTable.each(function(param) {
             var row = new Element('tr', {'class': param.getStatus()});
-            row.insert(new Element('td', {'class': 'param_name'}).update(param.name));
-            row.insert(new Element('td', {'class': 'param_required_' + param.isRequired }).update(param.isRequired));
-            row.insert(new Element('td', {'class': 'param_value'}).update(param.value));
-            row.insert(new Element('td', {'class': 'param_status'}).update(param.getStatus()));
+            row.insert(new Element('td', {'class': 'name'}).update(param.name));
+            row.insert(new Element('td', {'class': 'required required_' + param.isRequired }).update(param.isRequired));
+            row.insert(new Element('td', {'class': 'value'}).update(param.value));
+            row.insert(new Element('td', {'class': 'status'}).update(param.getStatus()));
             table.insert(row);
         });
         
@@ -93,8 +93,8 @@ var SSOTester = Class.create({
     showTokenProcess: function() {
         var tokenString = this.getTokenString();
         var token = SHA1(tokenString);
-        this.stdout.insert('<p>Token string before sha-1 should be: <br/>'+ tokenString +'</p>');
-        this.stdout.insert('<p>Final token after sha-1 should be: <br/>'+ token +'</p>');
+        this.stdout.insert('<p>Token string before SHA-1 should be: <code>'+ tokenString +'</code></p>');
+        this.stdout.insert('<p>Final token after SHA-1 should be: <code>'+ token +'</code></p>');
         if (token == this.params['token']) {
             this.stdout.insert('<p class="success">The token match !</p>');
         } else {
