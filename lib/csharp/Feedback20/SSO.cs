@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Collections.Specialized;
 using System.Security.Cryptography;
+using System.Text;
+using System.Web;
 namespace Feedback20
 {
     class SSO
@@ -14,6 +16,15 @@ namespace Feedback20
         private string server;
         
         private IDictionary<String, String> Parameters;
+        public NameValueCollection URLEncodedParameters { get {
+            var query =  HttpUtility.ParseQueryString(string.Empty);
+            foreach (string key in PARAMS) { 
+                if (Parameters.ContainsKey(key)) {
+                    query[key] = Parameters[key];
+                }
+            }
+            return query;
+        } }
 
         public long Timestamp { get { return (DateTime.UtcNow.Ticks - DateTime.Parse("01/01/1970 00:00:00").Ticks) / 10000000; } }
         public Uri AvatarUrl { set { Parameters["avatar_url"] = value.ToString(); } }
@@ -37,7 +48,7 @@ namespace Feedback20
         public Uri BuildUri() 
         {
             Parameters["token"] = BuildToken();
-            return new Uri(server.ToString() + "cas/login?auth=sso&type=acceptor&" + TwoWayJoin("&", "=", Parameters, PARAMS));
+            return new Uri(server.ToString() + "cas/login?auth=sso&type=acceptor&" + URLEncodedParameters.ToString());
         }
 
         public string BuildToken() {
