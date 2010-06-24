@@ -1,5 +1,6 @@
 package com.feedback20.users;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -12,7 +13,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
+ * This class generate SSO link for the Feedback2.0 platform.
+ * @version 0.1
  */
 public class SSO {
 
@@ -26,28 +28,47 @@ public class SSO {
         params = new HashMap<String, String>();
     }
 
+    /**
+     * @param server URL of your authentication server generally something like
+     *               http<b>p</b>://<your-app-name>.users.feedback20.com/
+     * @param salt   The salt available in your administration panel (see SSO doc page 6)
+     */
     public SSO(URL server, String salt) {
         this();
         setServer(server);
         setSalt(salt);
     }
 
+    /**
+     *
+     * @param server  URL of your authentication server generally something like
+     *                http<b>s</b>://<your-app-name>.users.feedback20.com/
+     * @param salt    The salt available in your administration panel (see SSO doc page 6)
+     * @param service URL of the application where the user will be redirected
+     *                after the authentication. Generally something like http://<your-app-name>.ideas.feedback20.com/
+     */
     public SSO(URL server, String salt, URL service) {
         this(server, salt);
         setService(service);
     }
 
-    public String getURL() {
+    /**
+     * @return 
+     */
+    public URL getURL() {
         setToken();
-        return getBaseURL() + join(joinPairs(params, "=", PARAMS), "&");
+        try {
+            return new URL(getBaseURL() + join(joinPairs(params, "=", PARAMS), "&"));
+        } catch (MalformedURLException e) {
+            return null;
+        }
     }
 
     public String getToken() {
         return sha1(join(joinPairs(params, "-", TOKENIZED_PARAMS), ":") + salt);
     }
 
-
-    public String sha1(String text) {
+    private String sha1(String text) {
         if (null == text) {
             throw new NullPointerException("Can't has encode text: null given");
         }
@@ -93,7 +114,7 @@ public class SSO {
         return Calendar.getInstance().getTime().getTime();
     }
 
-    public static List<String> joinPairs(Map<String, String> hash, String separator, String[] keys) {
+    private static List<String> joinPairs(Map<String, String> hash, String separator, String[] keys) {
         List<String> pairs = new ArrayList<String>();
         for (String key : keys) {
             if (hash.containsKey(key)) {
@@ -103,7 +124,7 @@ public class SSO {
         return pairs;
     }
 
-    public static String join(Collection s, String delimiter) {
+    private static String join(Collection s, String delimiter) {
         StringBuffer buffer = new StringBuffer();
         Iterator iter = s.iterator();
         while (iter.hasNext()) {

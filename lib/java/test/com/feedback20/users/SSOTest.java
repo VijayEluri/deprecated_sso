@@ -24,7 +24,7 @@ public class SSOTest {
             setUuid("42");
             setExpires(1277309412);
         }};
-        assertEquals(sso.getURL(), expected);
+        assertEquals(sso.getURL().toString(), expected);
     }
 
     @Test
@@ -40,6 +40,6 @@ public class SSOTest {
             setUuid("42");
             setExpires(1277309412);
         }};
-        assertEquals(sso.getURL(), expected);
+        assertEquals(sso.getURL().toString(), expected);
     }
 }
