@@ -17,7 +17,7 @@ Example of use:
         'email' => 'foo@example.com',
         'role' => 'user',
         'uuid' => 42,
-        'expires_in' => (60 * 60 * 24) // Expire in 24 hours
+        'expires_in' => (60 * 60 * 24) // Valid for 24 hours
     );
     ?>
     <a href="<?php echo $sso_link; ?>">Go to ideas site</a>
