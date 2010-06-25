@@ -1,0 +1,24 @@
+Feedback20SSO
+======================
+
+
+Example of use:
+
+    <?php
+    $sso = new SSOTest(
+        'https://example.users.feedback20.com/',
+        'bfc9396b7c710746b19a1297e70d1716',
+        'http://example.ideas.feedback20.com/');
+
+    $sso_link = $sso->url(array(
+        'firstname' => 'Renaud',
+        'lastname' => 'Morane',
+        'avatar_url' => 'http://example.com/avatar.png',
+        'email' => 'foo@example.com',
+        'role' => 'user',
+        'uuid' => 42,
+        'expires_in' => (60 * 60 * 24) // Expire in 24 hours
+    );
+    ?>
+    <a href="<?php echo $sso_link; ?>">Go to ideas site</a>
+
