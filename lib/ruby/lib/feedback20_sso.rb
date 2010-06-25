@@ -74,7 +74,7 @@ module Feedback20
     
     def check_params(params)
       missing_params = REQUIRED_PARAMS.reject{ |required_key| params.has_key?(required_key) }
-      raise ArgumentError.new("Missing required parameters: #{params.map{ |p| p.inspect }}") unless missing_params.empty?
+      raise ArgumentError.new("Missing required parameters: #{missing_params.map{ |p| p.inspect }.join(', ')}") unless missing_params.empty?
     end
     
     def ordered_slice(params, keys)
