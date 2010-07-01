@@ -38,8 +38,9 @@ module Feedback20
     
     def initialize(config={})
       @salt = config['salt'] or raise ArgumentError.new("Missing required parameter 'salt'")
-      @service = config['service']
-      @server = config['server'] or raise ArgumentError.new("Missing required parameter 'server'")
+      @service = URI.parse(config['service'].to_s)
+      raise ArgumentError.new("Missing required parameter 'server'") unless config.has_key?('server')
+      @server = URI.parse(config['server'].to_s)
     end 
     
     # Required params:
@@ -57,7 +58,10 @@ module Feedback20
       normalize_params(params)
       check_params(params)
       query_string = ordered_slice(params, PARAMS).map{ |key, value| "#{key}=#{CGI.escape(value)}" }.join('&')
-      URI.escape("#{base_url}#{query_string}")
+      server.scheme = 'https'
+      server.path = '/cas/login'
+      server.query = 'auth=sso&type=acceptor&' << query_string
+      server
     end
 
     def token(params)
@@ -85,7 +89,7 @@ module Feedback20
     end
     
     def base_url
-      "#{server}cas/login?auth=sso&type=acceptor&"
+      "#{server}cas/login?"
     end
     
   end

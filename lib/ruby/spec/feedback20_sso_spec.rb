@@ -15,7 +15,7 @@ describe Feedback20::SSO do
       'firstname' => 'Renaud',
       'uuid' => 42,
       'expires' => 1277309412
-    ).should == "https://example.users.feedback20.com/cas/login?auth=sso&type=acceptor&expires=1277309412&firstname=Renaud&service=http%253A%252F%252Fexample.ideas.feedback20.com%252F&token=c34d2ee42be49635c027d1a7c39fd2f5d8411f39&uuid=42"
+    ).to_s.should == "https://example.users.feedback20.com/cas/login?auth=sso&type=acceptor&expires=1277309412&firstname=Renaud&service=http%3A%2F%2Fexample.ideas.feedback20.com%2F&token=c34d2ee42be49635c027d1a7c39fd2f5d8411f39&uuid=42"
   end
   
   it 'should works with all params' do
@@ -28,7 +28,7 @@ describe Feedback20::SSO do
       'role' => 'user',
       'uuid' => 42,
       'expires' => 1277309412
-    ).should == "https://example.users.feedback20.com/cas/login?auth=sso&type=acceptor&avatar_url=http%253A%252F%252Fexample.com%252Favatar.png&charset=utf-8&email=foo%2540example.com&expires=1277309412&firstname=Renaud&lastname=Morane&role=user&service=http%253A%252F%252Fexample.ideas.feedback20.com%252F&token=4b44a7e193ba638700f44186de6caf3ebc270548&uuid=42"
+    ).to_s.should == "https://example.users.feedback20.com/cas/login?auth=sso&type=acceptor&avatar_url=http%3A%2F%2Fexample.com%2Favatar.png&charset=utf-8&email=foo%40example.com&expires=1277309412&firstname=Renaud&lastname=Morane&role=user&service=http%3A%2F%2Fexample.ideas.feedback20.com%2F&token=4b44a7e193ba638700f44186de6caf3ebc270548&uuid=42"
   end
   
   it 'could set expires with expires_in' do
@@ -42,7 +42,7 @@ describe Feedback20::SSO do
       'role' => 'user',
       'uuid' => 42,
       'expires_in' => 2
-    ).should == "https://example.users.feedback20.com/cas/login?auth=sso&type=acceptor&avatar_url=http%253A%252F%252Fexample.com%252Favatar.png&charset=utf-8&email=foo%2540example.com&expires=1277309412&firstname=Renaud&lastname=Morane&role=user&service=http%253A%252F%252Fexample.ideas.feedback20.com%252F&token=4b44a7e193ba638700f44186de6caf3ebc270548&uuid=42"
+    ).to_s.should == "https://example.users.feedback20.com/cas/login?auth=sso&type=acceptor&avatar_url=http%3A%2F%2Fexample.com%2Favatar.png&charset=utf-8&email=foo%40example.com&expires=1277309412&firstname=Renaud&lastname=Morane&role=user&service=http%3A%2F%2Fexample.ideas.feedback20.com%2F&token=4b44a7e193ba638700f44186de6caf3ebc270548&uuid=42"
   end
   
   it 'can override service into #url' do
@@ -56,7 +56,7 @@ describe Feedback20::SSO do
       'role' => 'user',
       'uuid' => 42,
       'expires' => 1277309412
-    ).should == "https://example.users.feedback20.com/cas/login?auth=sso&type=acceptor&avatar_url=http%253A%252F%252Fexample.com%252Favatar.png&charset=utf-8&email=foo%2540example.com&expires=1277309412&firstname=Renaud&lastname=Morane&role=user&service=http%253A%252F%252Fexample.com%252F&token=4b44a7e193ba638700f44186de6caf3ebc270548&uuid=42"
+    ).to_s.should == "https://example.users.feedback20.com/cas/login?auth=sso&type=acceptor&avatar_url=http%3A%2F%2Fexample.com%2Favatar.png&charset=utf-8&email=foo%40example.com&expires=1277309412&firstname=Renaud&lastname=Morane&role=user&service=http%3A%2F%2Fexample.com%2F&token=4b44a7e193ba638700f44186de6caf3ebc270548&uuid=42"
   end
   
 end
