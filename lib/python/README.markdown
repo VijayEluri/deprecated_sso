@@ -1,7 +1,6 @@
-feedback20.SSO
-======================
+# feedback20.SSO
 
-Example of use:
+Usage:
 
     import feedback20
     sso = feedback20.SSO(

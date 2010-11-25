@@ -1,7 +1,6 @@
-Feedback20.SSO
-==================
+# Feedback20.SSO
 
-Example of use:
+Usage:
 
     var server = new Uri("https://example.users.feedback20.com/");
     var service = new Uri("http://example.ideas.feedback20.com/");
