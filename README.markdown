@@ -1,4 +1,3 @@
-Feedback2.0 SSO
-===============================
+# Dimelo SSO
 
-Resources to make Feedback2.0's SSO integration more easy.
+Resources to make Dimelo's SSO integration more easy.

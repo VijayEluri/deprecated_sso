@@ -16,4 +16,4 @@ Example of use:
         setUuid("42");
         setExpiresIn(60 * 60 * 24); // Valid for 24 hours
     }};
-    System.out.println(ss.getURL().toString());
+    System.out.println(sso.getURL().toString());
