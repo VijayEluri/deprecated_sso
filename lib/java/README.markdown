@@ -1,7 +1,6 @@
-com.feedback20.users.SSO
-=============================
+# com.dimelo.users.SSO
 
-Example of use:
+Usage:
     
     URL server = new URL("https", "example.users.feedback20.com", "/");
     String salt = "bfc9396b7c710746b19a1297e70d1716";
