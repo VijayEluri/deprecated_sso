@@ -1,11 +1,9 @@
-Feedback20SSO
-======================
+# DimeloSSO
 
-
-Example of use:
+Usage:
 
     <?php
-    $sso = new SSOTest(
+    $sso = new DimeloSSO(
         'https://example.users.feedback20.com/',
         'bfc9396b7c710746b19a1297e70d1716',
         'http://example.ideas.feedback20.com/');

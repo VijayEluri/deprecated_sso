@@ -1,9 +1,9 @@
 <?php
 /**
- * This class generate SSO link for the Feedback2.0 platform.
- * Feedback20SSO(string $server, string $salt[, string $service])
+ * This class generate SSO link for the Dimelo platform.
+ * DimeloSSO(string $server, string $salt[, string $service])
  */
-class Feedback20SSO {
+class DimeloSSO {
     
     function __construct($server, $salt, $service=null) {
         //consts

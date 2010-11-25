@@ -1,7 +1,7 @@
 <?php
-require_once 'feedback20sso.class.php';
+require_once 'dimelo_sso.class.php';
 
-class SSOTest extends Feedback20SSO {
+class SSOTest extends DimeloSSO {
     
     protected function get_timestamp() {
         return 1277309410;
