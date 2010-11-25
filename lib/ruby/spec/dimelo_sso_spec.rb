@@ -1,9 +1,9 @@
-require File.dirname(__FILE__) + '/../lib/feedback20_sso.rb'
+require File.expand_path(File.dirname(__FILE__) + '/../lib/dimelo_sso.rb')
 
-describe Feedback20::SSO do
+describe Dimelo::SSO do
   
   before(:each) do
-    @sso = Feedback20::SSO.new(
+    @sso = Dimelo::SSO.new(
       'service' => 'http://example.ideas.feedback20.com/',
       'server' => 'https://example.users.feedback20.com/',
       'salt' => 'bfc9396b7c710746b19a1297e70d1716'

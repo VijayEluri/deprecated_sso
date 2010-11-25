@@ -2,18 +2,18 @@ require 'uri'
 require 'cgi'
 require 'digest/sha1'
 
-module Feedback20
+module Dimelo
   
-  # This class generate SSO links for the Feedback2.0 platform. All param keys should be strings not symbols
+  # This class generate SSO links for the Dimelo platform. All param keys should be strings not symbols
   # Required params:
-  #   - salt   : SSO salt as String. Found in your Feedback2.0 admin panel
+  #   - salt   : SSO salt as String. Found in your dimelo admin panel
   #   - server : CAS server URL with scheme and trailing slash like http://example.users.feedback20.com/
   #
   # Optional params:
   #   - service : Service URL with scheme and trailing slash like http://example.ideas.feedback20.com/
   # 
   # Example:
-  #   @sso = Feedback20::SSO.new(
+  #   @sso = Dimelo::SSO.new(
   #     'service' => 'http://example.ideas.feedback20.com/',
   #     'server' => 'https://example.users.feedback20.com/',
   #     'salt' => 'bfc9396b7c710746b19a1297e70d1716'
@@ -30,6 +30,7 @@ module Feedback20
   #     'expires_in'  => (60 * 60 * 24)
   #   )
   class SSO
+    
     REQUIRED_PARAMS = %w(firstname expires uuid).sort.freeze
     TOKENIZED_PARAMS = (REQUIRED_PARAMS + %w(avatar_url email lastname role)).sort.freeze
     PARAMS = (TOKENIZED_PARAMS + %w(charset service token)).sort.freeze
