@@ -11,7 +11,7 @@ except ImportError:
 
 
 class SSO(object):
-    """This class generate SSO links for the Feedback2.0 platform.
+    """This class generate SSO links for the Dimelo platform.
     SSO(server, salt[, service])
     
     >>> server = 'https://example.users.feedback20.com/'

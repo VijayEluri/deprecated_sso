@@ -1,9 +1,9 @@
-# feedback20.SSO
+# dimelo.SSO
 
 Usage:
 
-    import feedback20
-    sso = feedback20.SSO(
+    import dimelo
+    sso = dimelo.SSO(
         'https://example.users.feedback20.com/',
         'http://example.ideas.feedback20.com/',
         'bfc9396b7c710746b19a1297e70d1716'
