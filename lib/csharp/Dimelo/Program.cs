@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Feedback20
+namespace Dimelo
 {
     class Program
     {

@@ -4,7 +4,7 @@ using System.Collections.Specialized;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
-namespace Feedback20
+namespace Dimelo
 {
     class SSO
     {
