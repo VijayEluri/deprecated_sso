@@ -1,4 +1,4 @@
-# Feedback20.SSO
+# Dimelo.SSO
 
 Usage:
 
