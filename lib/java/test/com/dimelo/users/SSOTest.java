@@ -1,18 +1,21 @@
 package com.dimelo.users;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Date;
 
 import org.junit.Test;
 
 public class SSOTest
 {
 
+    private static final Date _EXPIRES = new Date(1277309412000L);
+    private static final String _SALT = "bfc9396b7c710746b19a1297e70d1716";
     private static final URL _SERVER;
     private static final URL _SERVICE;
-    private static final String _SALT = "bfc9396b7c710746b19a1297e70d1716";
     static {
         try {
             _SERVER = new URL("https", "example.users.feedback20.com", "/");
@@ -20,22 +23,6 @@ public class SSOTest
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    @Test
-    public void testRequiredParams()
-    {
-        final String expected = "https://example.users.feedback20.com/cas/login?auth=sso&type=acceptor&expires=1277309412&firstname=Renaud&service=http%3A%2F%2Fexample.ideas.feedback20.com%2F&token=c34d2ee42be49635c027d1a7c39fd2f5d8411f39&uuid=42";
-        final SSO sso = new SSO(_SERVER, _SALT, _SERVICE)
-        {
-
-            {
-                setFirstName("Renaud");
-                setUuid("42");
-                setExpires(1277309412);
-            }
-        };
-        assertEquals(sso.getURL().toString(), expected);
     }
 
     @Test
@@ -53,11 +40,37 @@ public class SSOTest
                 setCharset("utf-8");
                 setRole("user");
                 setUuid("42");
-                setExpires(1277309412);
+                setExpires(_EXPIRES);
             }
 
         };
         assertEquals(sso.getURL().toString(), expected);
     }
 
+    @Test
+    public void testExpiresIn()
+    {
+        final SSO sso = new SSO(_SERVER, _SALT, _SERVICE);
+        sso.setExpiresIn(60 * 24 * 24);
+        final long expires = Long.parseLong(sso.getExpires());
+        final long expected = System.currentTimeMillis() / 1000 + 60 * 24 * 24;
+        assertTrue(expires < (expected + 50));
+        assertTrue(expires > (expected - 50));
+    }
+
+    @Test
+    public void testRequiredParams()
+    {
+        final String expected = "https://example.users.feedback20.com/cas/login?auth=sso&type=acceptor&expires=1277309412&firstname=Renaud&service=http%3A%2F%2Fexample.ideas.feedback20.com%2F&token=c34d2ee42be49635c027d1a7c39fd2f5d8411f39&uuid=42";
+        final SSO sso = new SSO(_SERVER, _SALT, _SERVICE)
+        {
+
+            {
+                setFirstName("Renaud");
+                setUuid("42");
+                setExpires(_EXPIRES);
+            }
+        };
+        assertEquals(sso.getURL().toString(), expected);
+    }
 }

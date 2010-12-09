@@ -9,6 +9,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -161,6 +162,11 @@ public class SSO
         return _params.get("email");
     }
 
+    public String getExpires()
+    {
+        return _params.get("expires");
+    }
+
     public String getFirstName()
     {
         return _params.get("firstname");
@@ -218,14 +224,14 @@ public class SSO
         _params.put("email", email);
     }
 
-    public void setExpires(long timestamp)
+    public void setExpires(final Date date)
     {
-        _params.put("expires", new Long(timestamp).toString());
+        _params.put("expires", new Long(date.getTime() / 1000).toString());
     }
 
-    public void setExpiresIn(int in)
+    public void setExpiresIn(final int in)
     {
-        _params.put("expires", new Long(in + getTimestamp()).toString());
+        setExpires(new Date(System.currentTimeMillis() + in * 1000));
     }
 
     public void setFirstName(String firstName)
