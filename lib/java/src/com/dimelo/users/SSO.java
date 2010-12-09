@@ -7,7 +7,6 @@ import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
@@ -140,11 +139,6 @@ public class SSO
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    protected long getTimestamp()
-    {
-        return Calendar.getInstance().getTime().getTime();
     }
 
     public String getAvatarUrl()
