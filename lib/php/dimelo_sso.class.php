@@ -41,7 +41,7 @@ class DimeloSSO {
         
         $params = $this->ordered_slice($params, $this->PARAMS);
         foreach($params as $key => $value) {
-            $params[$key] = urlencode($value);
+            $params[$key] = rawurlencode($value);
         }
         return $this->base_url().$this->two_way_join('&', '=', $params);
     }
