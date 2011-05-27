@@ -32,7 +32,10 @@ module Dimelo
   class SSO
     
     REQUIRED_PARAMS = %w(firstname expires uuid).sort.freeze
-    TOKENIZED_PARAMS = (REQUIRED_PARAMS + %w(avatar_url email lastname role)).sort.freeze
+    TOKENIZED_PARAMS = (
+      REQUIRED_PARAMS + %w(avatar_url email lastname role) +
+      (1..10).map { |i| "custom_field_#{i}"}
+    ).sort.freeze
     PARAMS = (TOKENIZED_PARAMS + %w(charset service token)).sort.freeze
     
     attr_accessor :salt, :service, :server

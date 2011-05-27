@@ -27,8 +27,9 @@ describe Dimelo::SSO do
       'charset' => 'utf-8',
       'role' => 'user',
       'uuid' => 42,
+      'custom_field_1' => 'custom field 1',
       'expires' => 1277309412
-    ).to_s.should == "https://example.users.feedback20.com/cas/login?auth=sso&type=acceptor&avatar_url=http%3A%2F%2Fexample.com%2Favatar.png&charset=utf-8&email=foo%40example.com&expires=1277309412&firstname=Renaud&lastname=Morane&role=user&service=http%3A%2F%2Fexample.ideas.feedback20.com%2F&token=4b44a7e193ba638700f44186de6caf3ebc270548&uuid=42"
+    ).to_s.should == "https://example.users.feedback20.com/cas/login?auth=sso&type=acceptor&avatar_url=http%3A%2F%2Fexample.com%2Favatar.png&charset=utf-8&custom_field_1=custom+field+1&email=foo%40example.com&expires=1277309412&firstname=Renaud&lastname=Morane&role=user&service=http%3A%2F%2Fexample.ideas.feedback20.com%2F&token=d84559ad53d21e1bd0ce88cd3178cc7e91da1499&uuid=42"
   end
   
   it 'could set expires with expires_in' do
