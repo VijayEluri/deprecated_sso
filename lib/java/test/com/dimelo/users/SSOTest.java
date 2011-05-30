@@ -35,7 +35,7 @@ public class SSOTest {
 
     @Test
     public void testAllParams() {
-        final String expected = "https://example.users.feedback20.com/cas/login?auth=sso&type=acceptor&avatar_url=http%3A%2F%2Fexample.com%2Favatar.png&charset=utf-8&email=foo%40example.com&expires=1277309412000&firstname=Renaud&lastname=Morane&role=user&service=http%3A%2F%2Fexample.ideas.feedback20.com%2F&token=f4660177e8e1d2f8fd90621dd283c1c4020b05a8&uuid=42";
+        final String expected = "https://example.users.feedback20.com/cas/login?auth=sso&type=acceptor&avatar_url=http%3A%2F%2Fexample.com%2Favatar.png&charset=utf-8&custom_field_1=custom+field+1&email=foo%40example.com&expires=1277309412000&firstname=Renaud&lastname=Morane&role=user&service=http%3A%2F%2Fexample.ideas.feedback20.com%2F&token=3eb908642c00efb6ce275add1b202689e5a7929a&uuid=42";
         final SSO sso = new SSO(_SERVER, _SALT, _SERVICE) {
 
             {
@@ -47,6 +47,7 @@ public class SSOTest {
                 setRole("user");
                 setUuid("42");
                 setExpires(_EXPIRES);
+                setCustomField1("custom field 1");
             }
         };
         assertEquals(sso.getURL().toString(), expected);

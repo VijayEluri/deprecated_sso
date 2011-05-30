@@ -23,10 +23,10 @@ import java.util.logging.Logger;
  */
 public class SSO {
 
-    private static String[] _PARAMS = {"avatar_url", "charset", "email",
+    private static String[] _PARAMS = {"avatar_url", "charset", "custom_field_1", "custom_field_10", "custom_field_2", "custom_field_3", "custom_field_4", "custom_field_5", "custom_field_6", "custom_field_7", "custom_field_8", "custom_field_9", "email",
         "expires", "firstname", "lastname", "role", "service", "token",
         "uuid"};
-    private static String[] _TOKENIZED_PARAMS = {"avatar_url", "email",
+    private static String[] _TOKENIZED_PARAMS = {"avatar_url", "custom_field_1", "custom_field_10", "custom_field_2", "custom_field_3", "custom_field_4", "custom_field_5", "custom_field_6", "custom_field_7", "custom_field_8", "custom_field_9", "email",
         "expires", "firstname", "lastname", "role", "uuid"};
 
     private static String join(final Collection list, final String delimiter) {
@@ -147,6 +147,46 @@ public class SSO {
         return _params.get("charset");
     }
 
+    public String getCustomField1() {
+        return _params.get("custom_field_1");
+    }
+
+    public String getCustomField2() {
+        return _params.get("custom_field_2");
+    }
+
+    public String getCustomField3() {
+        return _params.get("custom_field_3");
+    }
+
+    public String getCustomField4() {
+        return _params.get("custom_field_4");
+    }
+
+    public String getCustomField5() {
+        return _params.get("custom_field_5");
+    }
+
+    public String getCustomField6() {
+        return _params.get("custom_field_6");
+    }
+
+    public String getCustomField7() {
+        return _params.get("custom_field_7");
+    }
+
+    public String getCustomField8() {
+        return _params.get("custom_field_8");
+    }
+
+    public String getCustomField9() {
+        return _params.get("custom_field_9");
+    }
+
+    public String getCustomField10() {
+        return _params.get("custom_field_10");
+    }
+
     public String getEmail() {
         return _params.get("email");
     }
@@ -199,6 +239,46 @@ public class SSO {
 
     public void setCharset(String charset) {
         _params.put("charset", charset);
+    }
+
+    public void setCustomField1(String customField1) {
+        _params.put("custom_field_1", customField1);
+    }
+
+    public void setCustomField2(String customField2) {
+        _params.put("custom_field_2", customField2);
+    }
+
+    public void setCustomField3(String customField3) {
+        _params.put("custom_field_3", customField3);
+    }
+
+    public void setCustomField4(String customField4) {
+        _params.put("custom_field_4", customField4);
+    }
+
+    public void setCustomField5(String customField5) {
+        _params.put("custom_field_5", customField5);
+    }
+
+    public void setCustomField6(String customField6) {
+        _params.put("custom_field_6", customField6);
+    }
+
+    public void setCustomField7(String customField7) {
+        _params.put("custom_field_7", customField7);
+    }
+
+    public void setCustomField8(String customField8) {
+        _params.put("custom_field_8", customField8);
+    }
+
+    public void setCustomField9(String customField9) {
+        _params.put("custom_field_9", customField9);
+    }
+
+    public void setCustomField10(String customField10) {
+        _params.put("custom_field_10", customField10);
     }
 
     public void setEmail(String email) {
