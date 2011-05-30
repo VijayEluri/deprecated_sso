@@ -9,8 +9,8 @@ namespace Dimelo
     class SSO
     {
 
-        private static string[] TOKENIZED_PARAMS = {"avatar_url", "email", "expires", "firstname", "lastname", "role", "uuid"};
-        private static string[] PARAMS = {"avatar_url", "charset", "email", "expires", "firstname", "lastname", "role", "service", "token", "uuid" };
+        private static string[] TOKENIZED_PARAMS = {"avatar_url", "custom_field_1", "custom_field_10", "custom_field_2", "custom_field_3", "custom_field_4", "custom_field_5", "custom_field_6", "custom_field_7", "custom_field_8", "custom_field_9", "email", "expires", "firstname", "lastname", "role", "uuid"};
+        private static string[] PARAMS = {"avatar_url", "charset", "custom_field_1", "custom_field_10", "custom_field_2", "custom_field_3", "custom_field_4", "custom_field_5", "custom_field_6", "custom_field_7", "custom_field_8", "custom_field_9", "email", "expires", "firstname", "lastname", "role", "service", "token", "uuid" };
 
         private string salt;
         private string server;
@@ -36,6 +36,16 @@ namespace Dimelo
         public string LastName { set { Parameters["lastname"] = value; } }
         public string Role { set { Parameters["role"] = value; } }
         public string Uuid { set { Parameters["uuid"] = value; } }
+        public string CustomField1 { set { Parameters["custom_field_1"] = value; } }
+        public string CustomField2 { set { Parameters["custom_field_2"] = value; } }
+        public string CustomField3 { set { Parameters["custom_field_3"] = value; } }
+        public string CustomField4 { set { Parameters["custom_field_4"] = value; } }
+        public string CustomField5 { set { Parameters["custom_field_5"] = value; } }
+        public string CustomField6 { set { Parameters["custom_field_6"] = value; } }
+        public string CustomField7 { set { Parameters["custom_field_7"] = value; } }
+        public string CustomField8 { set { Parameters["custom_field_8"] = value; } }
+        public string CustomField9 { set { Parameters["custom_field_9"] = value; } }
+        public string CustomField10 { set { Parameters["custom_field_10"] = value; } }
 
         public SSO(Uri server, String salt, Uri Service)
         {

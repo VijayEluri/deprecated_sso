@@ -30,9 +30,10 @@ namespace Dimelo
             sso.Email = "foo@example.com";
             sso.Charset = "utf-8";
             sso.Role = "user";
+            sso.CustomField1 = "custom field 1";
 
             // it should works with all params do
-            if (sso.BuildUri().ToString() != "https://example.users.feedback20.com/cas/login?auth=sso&type=acceptor&avatar_url=http://example.com/avatar.png&charset=utf-8&email=foo@example.com&expires=1277309412&firstname=Renaud&lastname=Morane&role=user&service=http://example.ideas.feedback20.com/&token=4b44a7e193ba638700f44186de6caf3ebc270548&uuid=42")
+            if (sso.BuildUri().ToString() != "https://example.users.feedback20.com/cas/login?auth=sso&type=acceptor&avatar_url=http://example.com/avatar.png&charset=utf-8&custom_field_1=custom+field+1&email=foo@example.com&expires=1277309412&firstname=Renaud&lastname=Morane&role=user&service=http://example.ideas.feedback20.com/&token=d84559ad53d21e1bd0ce88cd3178cc7e91da1499&uuid=42")
             {
                 Console.Write("F");
             }
