@@ -7,15 +7,15 @@ module Dimelo
   # This class generate SSO links for the Dimelo platform. All param keys should be strings not symbols
   # Required params:
   #   - salt   : SSO salt as String. Found in your dimelo admin panel
-  #   - server : CAS server URL with scheme and trailing slash like http://example.users.feedback20.com/
+  #   - server : CAS server URL with scheme and trailing slash like http://example.users.dimelo.com/
   #
   # Optional params:
-  #   - service : Service URL with scheme and trailing slash like http://example.ideas.feedback20.com/
+  #   - service : Service URL with scheme and trailing slash like http://example.ideas.dimelo.com/
   # 
   # Example:
   #   @sso = Dimelo::SSO.new(
-  #     'service' => 'http://example.ideas.feedback20.com/',
-  #     'server' => 'https://example.users.feedback20.com/',
+  #     'service' => 'http://example.ideas.dimelo.com/',
+  #     'server' => 'https://example.users.dimelo.com/',
   #     'salt' => 'bfc9396b7c710746b19a1297e70d1716'
   #   )
   #
