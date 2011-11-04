@@ -2,8 +2,8 @@
 
 Usage:
 
-    var server = new Uri("https://example.users.feedback20.com/");
-    var service = new Uri("http://example.ideas.feedback20.com/");
+    var server = new Uri("https://example.users.dimelo.com/");
+    var service = new Uri("http://example.ideas.dimelo.com/");
     var salt = "bfc9396b7c710746b19a1297e70d1716";
 
     var sso = new SSO(server, salt, service);

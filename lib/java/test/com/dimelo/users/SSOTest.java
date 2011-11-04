@@ -18,8 +18,8 @@ public class SSOTest {
 
     static {
         try {
-            _SERVER = new URL("https", "example.users.feedback20.com", "/");
-            _SERVICE = new URL("http", "example.ideas.feedback20.com", "/");
+            _SERVER = new URL("https", "example.users.dimelo.com", "/");
+            _SERVICE = new URL("http", "example.ideas.dimelo.com", "/");
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
@@ -35,7 +35,7 @@ public class SSOTest {
 
     @Test
     public void testAllParams() {
-        final String expected = "https://example.users.feedback20.com/cas/login?auth=sso&type=acceptor&avatar_url=http%3A%2F%2Fexample.com%2Favatar.png&charset=utf-8&custom_field_1=custom+field+1&email=foo%40example.com&expires=1277309412000&firstname=Renaud&lastname=Morane&role=user&service=http%3A%2F%2Fexample.ideas.feedback20.com%2F&token=3eb908642c00efb6ce275add1b202689e5a7929a&uuid=42";
+        final String expected = "https://example.users.dimelo.com/cas/login?auth=sso&type=acceptor&avatar_url=http%3A%2F%2Fexample.com%2Favatar.png&charset=utf-8&custom_field_1=custom+field+1&email=foo%40example.com&expires=1277309412000&firstname=Renaud&lastname=Morane&role=user&service=http%3A%2F%2Fexample.ideas.dimelo.com%2F&token=3eb908642c00efb6ce275add1b202689e5a7929a&uuid=42";
         final SSO sso = new SSO(_SERVER, _SALT, _SERVICE) {
 
             {
@@ -66,7 +66,7 @@ public class SSOTest {
 
     @Test
     public void testRequiredParams() {
-        final String expected = "https://example.users.feedback20.com/cas/login?auth=sso&type=acceptor&expires=1277309412000&firstname=Renaud&service=http%3A%2F%2Fexample.ideas.feedback20.com%2F&token=46c21dc51d56606d1973770b240f69ffeadd9b97&uuid=42";
+        final String expected = "https://example.users.dimelo.com/cas/login?auth=sso&type=acceptor&expires=1277309412000&firstname=Renaud&service=http%3A%2F%2Fexample.ideas.dimelo.com%2F&token=46c21dc51d56606d1973770b240f69ffeadd9b97&uuid=42";
         final SSO sso = new SSO(_SERVER, _SALT, _SERVICE) {
 
             {

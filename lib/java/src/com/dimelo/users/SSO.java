@@ -61,7 +61,7 @@ public class SSO {
 
     /**
      * @param server URL of your authentication server generally something like
-     *            <b>https</b>://your-app-name.users.feedback20.com/
+     *            <b>https</b>://your-app-name.users.dimelo.com/
      * @param salt The salt available in your administration panel (see SSO doc
      *            page 6)
      */
@@ -73,12 +73,12 @@ public class SSO {
 
     /**
      * @param server URL of your authentication server generally something like
-     *            <b>https</b>://your-app-name.users.feedback20.com/
+     *            <b>https</b>://your-app-name.users.dimelo.com/
      * @param salt The salt available in your administration panel (see SSO doc
      *            page 6)
      * @param service URL of the application where the user will be redirected
      *            after the authentication. Generally something like
-     *            http://your-app-name.ideas.feedback20.com/
+     *            http://your-app-name.ideas.dimelo.com/
      */
     public SSO(final URL server, final String salt, final URL service) {
         this(server, salt);

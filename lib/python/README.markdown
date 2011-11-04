@@ -4,8 +4,8 @@ Usage:
 
     import dimelo
     sso = dimelo.SSO(
-        'https://example.users.feedback20.com/',
-        'http://example.ideas.feedback20.com/',
+        'https://example.users.dimelo.com/',
+        'http://example.ideas.dimelo.com/',
         'bfc9396b7c710746b19a1297e70d1716'
     )
     sso_link = sso.url(

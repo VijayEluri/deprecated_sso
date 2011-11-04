@@ -4,8 +4,8 @@ Usage (Rails):
 
     # controller
     @sso = Dimelo::SSO.new(
-      'service' => 'http://example.ideas.feedback20.com/',
-      'server' => 'https://example.users.feedback20.com/',
+      'service' => 'http://example.ideas.dimelo.com/',
+      'server' => 'https://example.users.dimelo.com/',
       'salt' => 'bfc9396b7c710746b19a1297e70d1716'
     )
     @sso_link = @sso.url(

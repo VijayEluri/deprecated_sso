@@ -282,8 +282,8 @@ public class SSO
         final URL _SERVICE;
 
         try {
-            _SERVER = new URL("https", "example.users.feedback20.com", "/");
-            _SERVICE = new URL("http", "example.ideas.feedback20.com", "/");
+            _SERVER = new URL("https", "example.users.dimelo.com", "/");
+            _SERVICE = new URL("http", "example.ideas.dimelo.com", "/");
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }

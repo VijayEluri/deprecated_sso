@@ -4,9 +4,9 @@ Usage:
 
     <?php
     $sso = new DimeloSSO(
-        'https://example.users.feedback20.com/',
+        'https://example.users.dimelo.com/',
         'bfc9396b7c710746b19a1297e70d1716',
-        'http://example.ideas.feedback20.com/');
+        'http://example.ideas.dimelo.com/');
 
     $sso_link = $sso->url(array(
         'firstname' => 'Renaud',
