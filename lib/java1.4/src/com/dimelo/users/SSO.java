@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * This class generate SSO link for the Feedback2.0 platform.
+ * This class generate SSO link for the Dimelo platform.
  * 
  * @version 0.1
  */

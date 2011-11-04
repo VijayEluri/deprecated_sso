@@ -19,4 +19,4 @@ Usage (Rails):
     )
     
     # view
-    <%= link_to "Feedback2.0", @sso_link %>
+    <%= link_to "Dimelo", @sso_link %>
