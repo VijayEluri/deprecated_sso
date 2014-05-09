@@ -1,4 +1,4 @@
-# DimeloSSO
+# DimeloSSO (This SSO protocol is deprecated)
 
 Usage:
 
